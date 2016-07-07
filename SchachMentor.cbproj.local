@@ -2,31 +2,31 @@
 <BorlandProject>
 	<Transactions>
     <Transaction>1899.12.30 00:00:00.000.275,=C:\Users\Hans\Documents\Embarcadero\Studio\Projekte\Schachprogramm\Compute.cpp</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.246,=C:\Users\Hans\Documents\Embarcadero\Studio\Projekte\Schachprogramm\Pieces.cpp</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.024,=C:\Users\Hans\Documents\Embarcadero\Studio\Projekte\Schachprogramm\Movement.cpp</Transaction>
     <Transaction>1899.12.30 00:00:00.000.252,=C:\Users\Hans\Documents\Embarcadero\Studio\Projekte\Schachprogramm\Unit3.cpp</Transaction>
     <Transaction>1899.12.30 00:00:00.000.294,=C:\Users\Hans\Documents\Embarcadero\Studio\Projekte\Schachprogramm\Unit1.cpp</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.800,=C:\Users\Hans\Documents\Embarcadero\Studio\Projekte\Unit1.cpp</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.569,=C:\Users\Hans\Documents\Embarcadero\Studio\Projekte\Schachprogramm\Calculus.cpp</Transaction>
     <Transaction>1899.12.30 00:00:00.000.615,=C:\Users\Hans\Documents\Embarcadero\Studio\Projekte\Schachprogramm\Communicate.cpp</Transaction>
     <Transaction>1899.12.30 00:00:00.000.471,=C:\Users\Hans\Documents\Embarcadero\Studio\Projekte\Schachprogramm\EvaluationRekurs.cpp</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.809,=C:\Users\Hans\Documents\Embarcadero\Studio\Projekte\Schachprogramm\Playtime.cpp</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.506,C:\Users\Hans\Documents\Embarcadero\Studio\Projekte\SchachMentorPCH1.h=C:\Users\Hans\Documents\Embarcadero\Studio\Projekte\Project1PCH1.h</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.526,C:\Users\Hans\Documents\Embarcadero\Studio\Projekte\Schachprogramm\Main.cpp=C:\Users\Hans\Documents\Embarcadero\Studio\Projekte\Main.cpp</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.843,=C:\Users\Hans\Documents\Embarcadero\Studio\Projekte\Schachprogramm\Notation.cpp</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.047,=C:\Users\Hans\Documents\Embarcadero\Studio\Projekte\Project1PCH1.h</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.691,=C:\Users\Hans\Documents\Embarcadero\Studio\Projekte\Schachprogramm\Zuege.cpp</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.162,=C:\Users\Hans\Documents\Embarcadero\Studio\Projekte\Schachprogramm\Evaluation.cpp</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.510,C:\Users\Hans\Documents\Embarcadero\Studio\Projekte\SchachMentor.cbproj=C:\Users\Hans\Documents\Embarcadero\Studio\Projekte\Project1.cbproj</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.324,C:\Users\Hans\Documents\Embarcadero\Studio\Projekte\Schachprogramm\SchachMentorPCH1.h=C:\Users\Hans\Documents\Embarcadero\Studio\Projekte\SchachMentorPCH1.h</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.875,=C:\Users\Hans\Documents\Embarcadero\Studio\Projekte\Project1PCH1.h</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.712,C:\Users\Hans\Documents\Embarcadero\Studio\Projekte\Schachprogramm\SchachMentor.cbproj=C:\Users\Hans\Documents\Embarcadero\Studio\Projekte\SchachMentor.cbproj</Transaction>
     <Transaction>1899.12.30 00:00:00.000.870,=C:\Users\Hans\Documents\Embarcadero\Studio\Projekte\Schachprogramm\Buch.cpp</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.800,=C:\Users\Hans\Documents\Embarcadero\Studio\Projekte\Unit1.cpp</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.246,=C:\Users\Hans\Documents\Embarcadero\Studio\Projekte\Schachprogramm\Pieces.cpp</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.809,=C:\Users\Hans\Documents\Embarcadero\Studio\Projekte\Schachprogramm\Playtime.cpp</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.842,=C:\Users\Hans\Documents\Embarcadero\Studio\Projekte\Schachprogramm\Unit2.cpp</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.510,C:\Users\Hans\Documents\Embarcadero\Studio\Projekte\Project1.cbproj=C:\Users\Hans\Documents\Embarcadero\Studio\Projekte\SchachMentor.cbproj</Transaction>
     <Transaction>1899.12.30 00:00:00.000.453,=C:\Users\Hans\Documents\Embarcadero\Studio\Projekte\Schachprogramm\Board.cpp</Transaction>
     <Transaction>1899.12.30 00:00:00.000.367,=C:\Users\Hans\Documents\Embarcadero\Studio\Projekte\Schachprogramm\stdafx.cpp</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.935,C:\Users\Hans\Documents\Embarcadero\Studio\Projekte\Main.cpp=C:\Users\Hans\Documents\Embarcadero\Studio\Projekte\File2.cpp</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.047,=C:\Users\Hans\Documents\Embarcadero\Studio\Projekte\Project1PCH1.h</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.875,=C:\Users\Hans\Documents\Embarcadero\Studio\Projekte\Project1PCH1.h</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.569,=C:\Users\Hans\Documents\Embarcadero\Studio\Projekte\Schachprogramm\Calculus.cpp</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.024,=C:\Users\Hans\Documents\Embarcadero\Studio\Projekte\Schachprogramm\Movement.cpp</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.712,C:\Users\Hans\Documents\Embarcadero\Studio\Projekte\SchachMentor.cbproj=C:\Users\Hans\Documents\Embarcadero\Studio\Projekte\Schachprogramm\SchachMentor.cbproj</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.506,C:\Users\Hans\Documents\Embarcadero\Studio\Projekte\Project1PCH1.h=C:\Users\Hans\Documents\Embarcadero\Studio\Projekte\SchachMentorPCH1.h</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.691,=C:\Users\Hans\Documents\Embarcadero\Studio\Projekte\Schachprogramm\Zuege.cpp</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.843,=C:\Users\Hans\Documents\Embarcadero\Studio\Projekte\Schachprogramm\Notation.cpp</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.935,C:\Users\Hans\Documents\Embarcadero\Studio\Projekte\File2.cpp=C:\Users\Hans\Documents\Embarcadero\Studio\Projekte\Main.cpp</Transaction>
     <Transaction>1899.12.30 00:00:00.000.050,=C:\Users\Hans\Documents\Embarcadero\Studio\Projekte\File2.cpp</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.842,=C:\Users\Hans\Documents\Embarcadero\Studio\Projekte\Schachprogramm\Unit2.cpp</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.162,=C:\Users\Hans\Documents\Embarcadero\Studio\Projekte\Schachprogramm\Evaluation.cpp</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.324,C:\Users\Hans\Documents\Embarcadero\Studio\Projekte\SchachMentorPCH1.h=C:\Users\Hans\Documents\Embarcadero\Studio\Projekte\Schachprogramm\SchachMentorPCH1.h</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.526,C:\Users\Hans\Documents\Embarcadero\Studio\Projekte\Main.cpp=C:\Users\Hans\Documents\Embarcadero\Studio\Projekte\Schachprogramm\Main.cpp</Transaction>
   </Transactions>
 	<ProjectSortOrder AutoSort="0" SortType="0">
     <File Path="Board.cpp"/>

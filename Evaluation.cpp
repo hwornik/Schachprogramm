@@ -823,204 +823,329 @@ bool Evaluation::isPosunderAttack(Board *myboard,int posx,int posy, bool whiteto
 		return false;
 }
 
-Pieces *Evaluation::whichFigureAttacks(Board *myboard,int posx,int posy, bool whitetomove)
+Pieces **Evaluation::whichFigureAttacks(Board *myboard,int posx,int posy, bool whitetomove)
 {
 	int anzahl=0;
-	// Test auf Turm oder Dame
-	// Test auf Läufer oder Dame
 	// Test auf Bauer
 	// Test auf König
 	char promo = ' ';
 	bool notfoundfigure = true;
 	Pieces *piec[20];
 	// Test auf Night
-	if ((pie == 'n') || (pie == 'N'))
-	{
-		// Night;
+	// Night;
 		if (((posx + 2) < 9) && ((posy + 1) < 9))
 		{
 			if (whitetomove && myboard->getPieceonPos( posx + 2, posy + 1)=='n')
 			{
 					piec[anzahl]= new Pieces();
-					piec[anzahl]->setName(myboard->getPieceonPos(posx,posy));
+					piec[anzahl]->setName(myboard->getPieceonPos( posx + 2, posy + 1));
 					piec[anzahl]->setPos(posx,posy);
 					anzahl++;
 			}
 			else if(!whitetomove && myboard->getPieceonPos( posx + 2, posy + 1)=='N')
 			{
 					piec[anzahl]= new Pieces();
-					piec[anzahl]->setName(myboard->getPieceonPos(posx,posy));
+					piec[anzahl]->setName(myboard->getPieceonPos( posx + 2, posy + 1));
 					piec[anzahl]->setPos(posx,posy);
-                    anzahl++;
-            }
+					anzahl++;
+			}
 
 		}
-		if (((vx + 2)<9) && ((vy - 1)>0))
+		if (((posx + 2)<9) && ((posy - 1)>0))
 		{
-			if (moving->proofNextMove(searchhits, vx, vy, vx + 2, vy - 1, promo))
+			if (whitetomove && myboard->getPieceonPos( posx + 2, posy - 1)=='n')
 			{
-				notfoundfigure = this->nightTest(searchhits, pie, notfoundfigure, moving->moveisHit(), vx, vy, vx + 2, vy - 1, moveboard);
+					piec[anzahl]= new Pieces();
+					piec[anzahl]->setName(myboard->getPieceonPos( posx + 2, posy - 1));
+					piec[anzahl]->setPos(posx,posy);
+					anzahl++;
+			}
+			else if(!whitetomove && myboard->getPieceonPos( posx + 2, posy - 1)=='N')
+			{
+					piec[anzahl]= new Pieces();
+					piec[anzahl]->setName(myboard->getPieceonPos( posx + 2, posy - 1));
+					piec[anzahl]->setPos(posx,posy);
+					anzahl++;
 			}
 		}
-		if (((vx - 2)>0) && ((vy + 1)<9))
+		if (((posx - 2)>0) && ((posx + 1)<9))
 		{
-			if (moving->proofNextMove(searchhits, vx, vy, vx - 2, vy + 1, promo))
+			if (whitetomove && myboard->getPieceonPos( posx - 2, posy + 1)=='n')
 			{
-				notfoundfigure = this->nightTest(searchhits, pie, notfoundfigure, moving->moveisHit(), vx, vy, vx - 2, vy + 1, moveboard);
+					piec[anzahl]= new Pieces();
+					piec[anzahl]->setName(myboard->getPieceonPos( posx - 2, posy + 1));
+					piec[anzahl]->setPos(posx,posy);
+					anzahl++;
+			}
+			else if(!whitetomove && myboard->getPieceonPos( posx - 2, posy + 1)=='N')
+			{
+					piec[anzahl]= new Pieces();
+					piec[anzahl]->setName(myboard->getPieceonPos( posx - 2, posy + 1));
+					piec[anzahl]->setPos(posx,posy);
+					anzahl++;
 			}
 		}
-		if (((vx - 2)>0) && ((vy - 1)>0))
+		if (((posx - 2)>0) && ((posy - 1)>0))
 		{
-			if (moving->proofNextMove(searchhits, vx, vy, vx - 2, vy - 1, promo))
+			if (whitetomove && myboard->getPieceonPos( posx - 2, posy - 1)=='n')
 			{
-				notfoundfigure = this->nightTest(searchhits, pie, notfoundfigure, moving->moveisHit(), vx, vy, vx - 2, vy - 1, moveboard);
+					piec[anzahl]= new Pieces();
+					piec[anzahl]->setName(myboard->getPieceonPos( posx - 2, posy - 1));
+					piec[anzahl]->setPos(posx,posy);
+					anzahl++;
+			}
+			else if(!whitetomove && myboard->getPieceonPos( posx - 2, posy - 1)=='N')
+			{
+					piec[anzahl]= new Pieces();
+					piec[anzahl]->setName(myboard->getPieceonPos( posx - 2, posy - 1));
+					piec[anzahl]->setPos(posx,posy);
+					anzahl++;
 			}
 		}
-		if (((vx + 1)<9) && ((vy + 2)<9))
+		if (((posx + 1)<9) && ((posy + 2)<9))
 		{
-			if (moving->proofNextMove(searchhits, vx, vy, vx + 1, vy + 2, promo))
+			if (whitetomove && myboard->getPieceonPos( posx + 1, posy + 2)=='n')
 			{
-				notfoundfigure = this->nightTest(searchhits, pie, notfoundfigure, moving->moveisHit(), vx, vy, vx + 1, vy + 2, moveboard);
+					piec[anzahl]= new Pieces();
+					piec[anzahl]->setName(myboard->getPieceonPos( posx + 1, posy + 2));
+					piec[anzahl]->setPos(posx,posy);
+					anzahl++;
+			}
+			else if(!whitetomove && myboard->getPieceonPos( posx + 1, posy + 2)=='N')
+			{
+					piec[anzahl]= new Pieces();
+					piec[anzahl]->setName(myboard->getPieceonPos( posx + 1, posy + 2));
+					piec[anzahl]->setPos(posx,posy);
+					anzahl++;
 			}
 		}
-		if (((vx - 1)>0) && ((vy + 2)<9))
+		if (((posx - 1)>0) && ((posy + 2)<9))
 		{
-			if (moving->proofNextMove(searchhits, vx, vy, vx - 1, vy + 2, promo))
+			if (whitetomove && myboard->getPieceonPos( posx - 1, posy + 2)=='n')
 			{
-				notfoundfigure = this->nightTest(searchhits, pie, notfoundfigure, moving->moveisHit(), vx, vy, vx - 1, vy + 2, moveboard);
+					piec[anzahl]= new Pieces();
+					piec[anzahl]->setName(myboard->getPieceonPos( posx - 1, posy + 2));
+					piec[anzahl]->setPos(posx,posy);
+					anzahl++;
+			}
+			else if(!whitetomove && myboard->getPieceonPos( posx - 1, posy + 2)=='N')
+			{
+					piec[anzahl]= new Pieces();
+					piec[anzahl]->setName(myboard->getPieceonPos( posx - 1, posy + 2));
+					piec[anzahl]->setPos(posx,posy);
+					anzahl++;
 			}
 		}
-		if (((vx - 1)>0) && ((vy - 2)>0))
+		if (((posx - 1)>0) && ((posy - 2)>0))
 		{
-			if (moving->proofNextMove(searchhits, vx, vy, vx - 1, vy - 2, promo))
+			if (whitetomove && myboard->getPieceonPos( posx - 1, posy - 2)=='n')
 			{
-				notfoundfigure = this->nightTest(searchhits, pie, notfoundfigure, moving->moveisHit(), vx, vy, vx - 1, vy - 2, moveboard);
+					piec[anzahl]= new Pieces();
+					piec[anzahl]->setName(myboard->getPieceonPos( posx - 1, posy - 2));
+					piec[anzahl]->setPos(posx,posy);
+					anzahl++;
+			}
+			else if(!whitetomove && myboard->getPieceonPos( posx - 1, posy - 2)=='N')
+			{
+					piec[anzahl]= new Pieces();
+					piec[anzahl]->setName(myboard->getPieceonPos( posx - 1, posy - 2));
+					piec[anzahl]->setPos(posx,posy);
+					anzahl++;
 			}
 		}
-		if (((vx + 1)<9) && ((vy - 2)>0))
+		if (((posx + 1)<9) && ((posx - 2)>0))
 		{
-			if (moving->proofNextMove(searchhits, vx, vy, vx + 1, vy - 2, promo))
+			if (whitetomove && myboard->getPieceonPos( posx + 1, posy - 2)=='n')
 			{
-				notfoundfigure = this->nightTest(searchhits, pie, notfoundfigure, moving->moveisHit(), vx, vy, vx + 1, vy - 2, moveboard);
+					piec[anzahl]= new Pieces();
+					piec[anzahl]->setName(myboard->getPieceonPos( posx + 1, posy - 2));
+					piec[anzahl]->setPos(posx,posy);
+					anzahl++;
+			}
+			else if(!whitetomove && myboard->getPieceonPos( posx + 1, posy - 2)=='N')
+			{
+					piec[anzahl]= new Pieces();
+					piec[anzahl]->setName(myboard->getPieceonPos( posx + 1, posy - 2));
+					piec[anzahl]->setPos(posx,posy);
+					anzahl++;
 			}
 		}
-	}
-	else
-	{
-		if (pie != 'B' && pie != 'b')
+		// Test auf Turm oder Dame
+		// Move Forward
+		for (int i = 1; i < 9 - posy; i++)
 		{
-			// Move Forward
-			for (int i = 1; i < 9 - vy; i++)
+			if(myboard->getPieceonPos(posx,posy+i)!='e')
 			{
-				if (moving->proofNextMove(searchhits, vx, vy, vx, vy + i, promo))
+				if (whitetomove && ((myboard->getPieceonPos( posx, posy+i)=='r') || (myboard->getPieceonPos( posx, posy+i)=='q') ))
 				{
-					notfoundfigure = nightTest(searchhits, pie, notfoundfigure, moving->moveisHit(), vx, vy, vx, vy + i, moveboard);
+						piec[anzahl]= new Pieces();
+						piec[anzahl]->setName(myboard->getPieceonPos( posx, posy+i));
+						piec[anzahl]->setPos(posx,posy);
+						anzahl++;
 				}
-				else
+				else if (!whitetomove && ((myboard->getPieceonPos( posx, posy+i)=='R') || (myboard->getPieceonPos( posx, posy+i)=='Q') ) )
 				{
-					break;
+						piec[anzahl]= new Pieces();
+						piec[anzahl]->setName(myboard->getPieceonPos( posx, posy+i));
+						piec[anzahl]->setPos(posx,posy);
+						anzahl++;
 				}
-			}
-			// Move right
-			for (int i = 1; i < 9 - vx; i++)
-			{
-				if (moving->proofNextMove(searchhits, vx, vy, vx + 1, vy, promo))
-				{
-					notfoundfigure = nightTest(searchhits, pie, notfoundfigure, moving->moveisHit(), vx, vy, vx + 1, vy, moveboard);
-				}
-				else
-				{
-					break;
-				}
-			}
-			// Move down
-			for (int i = 1; i < vy; i++)
-			{
-
-				if (moving->proofNextMove(searchhits, vx, vy, vx, vy - i, promo))
-				{
-					notfoundfigure = nightTest(searchhits, pie, notfoundfigure, moving->moveisHit(), vx, vy, vx, vy - i, moveboard);
-				}
-				else
-				{
-					break;
-				}
-
-			}
-			// Move left
-			for (int i = 1; i < vx; i++)
-			{
-
-				if (moving->proofNextMove(searchhits, vx, vy, vx - i, vy, promo))
-				{
-					notfoundfigure = nightTest(searchhits, pie, notfoundfigure, moving->moveisHit(), vx, vy, vx - i, vy, moveboard);
-				}
-				else
-				{
-					break;
-				}
-
 			}
 		}
-		if (pie != 'R' && pie != 'r')
+		// Move right
+		for (int i = 1; i < 9 - posx; i++)
 		{
-			// nach rechts oben
-			for (int i = 1; i < 9; i++)
+			if(myboard->getPieceonPos(posx+i,posy)!='e')
 			{
-
-				if (((vx + i)<9) && ((vy + i)<9) && (moving->proofNextMove(searchhits, vx, vy, vx + i, vy + i, promo)))
+				if (whitetomove && ((myboard->getPieceonPos( posx+i, posy)=='r') || (myboard->getPieceonPos( posx+i, posy)=='q') ))
 				{
-					notfoundfigure = nightTest(searchhits, pie, notfoundfigure, moving->moveisHit(), vx, vy, vx + i, vy + i, moveboard);
+						piec[anzahl]= new Pieces();
+						piec[anzahl]->setName(myboard->getPieceonPos(posx+i,posy));
+						piec[anzahl]->setPos(posx,posy);
+						anzahl++;
 				}
-				else
+				else if (!whitetomove && ((myboard->getPieceonPos( posx+i, posy)=='R') || (myboard->getPieceonPos( posx+i, posy)=='Q') )  )
 				{
-					break;
+						piec[anzahl]= new Pieces();
+						piec[anzahl]->setName(myboard->getPieceonPos(posx+i,posy));
+						piec[anzahl]->setPos(posx,posy);
+						anzahl++;
 				}
-
-			}
-			// nach rechts unten
-			for (int i = 1; i < 9; i++)
-			{
-
-				if (((vx + i)<9) && ((vy - i)>0) && (moving->proofNextMove(searchhits, vx, vy, vx + i, vy - i, promo)))
-				{
-					notfoundfigure = nightTest(searchhits, pie, notfoundfigure, moving->moveisHit(), vx, vy, vx + i, vy - i, moveboard);
-				}
-				else
-				{
-					break;
-				}
-
-			}
-			// nach links unten
-			for (int i = 1; i < 9; i++)
-			{
-
-				if (((vx - i)>0) && ((vy - i)>0) && (moving->proofNextMove(searchhits, vx, vy, vx - i, vy - i, promo)))
-				{
-					notfoundfigure = nightTest(searchhits, pie, notfoundfigure, moving->moveisHit(), vx, vy, vx - i, vy - i, moveboard);
-				}
-				else
-				{
-					break;
-				}
-
-			}
-			// nach links oben
-			for (int i = 1; i < 9; i++)
-			{
-
-				if (((vx - i)>0) && ((vy + i)<9) && (searchhits, moving->proofNextMove(searchhits, vx, vy, vx - i, vy + i, promo)))
-				{
-					notfoundfigure = nightTest(searchhits, pie, notfoundfigure, moving->moveisHit(), vx, vy, vx - i, vy + i, moveboard);
-				}
-				else
-				{
-					break;
-				}
-
 			}
 		}
-	}
-	return NULL;
+		// Move down
+		for (int i = 1; i < posy; i++)
+		{
+			if(myboard->getPieceonPos(posx,posy-i)!='e')
+			{
+				if (whitetomove && ((myboard->getPieceonPos( posx, posy-i)=='r') || (myboard->getPieceonPos( posx, posy-i)=='q') ))
+				{
+						piec[anzahl]= new Pieces();
+						piec[anzahl]->setName(myboard->getPieceonPos(posx,posy-i));
+						piec[anzahl]->setPos(posx,posy);
+						anzahl++;
+				}
+				else if (!whitetomove && ((myboard->getPieceonPos( posx, posy-i)=='R') || (myboard->getPieceonPos( posx, posy-i)=='Q') ))
+				{
+						piec[anzahl]= new Pieces();
+						piec[anzahl]->setName(myboard->getPieceonPos(posx,posy-i));
+						piec[anzahl]->setPos(posx,posy);
+						anzahl++;
+				}
+			}
+
+		}
+		// Move left
+		for (int i = 1; i < posx; i++)
+		{
+			if(myboard->getPieceonPos(posx-i,posy)!='e')
+			{
+				if (whitetomove && ((myboard->getPieceonPos( posx-i, posy)=='r') || (myboard->getPieceonPos( posx-i, posy)=='q') ))
+				{
+						piec[anzahl]= new Pieces();
+						piec[anzahl]->setName(myboard->getPieceonPos(posx-i,posy));
+						piec[anzahl]->setPos(posx,posy);
+						anzahl++;
+				}
+				else if (!whitetomove && ((myboard->getPieceonPos( posx-i, posy)=='R') || (myboard->getPieceonPos( posx-i, posy)=='Q') )  )
+				{
+						piec[anzahl]= new Pieces();
+						piec[anzahl]->setName(myboard->getPieceonPos(posx-i,posy));
+						piec[anzahl]->setPos(posx,posy);
+						anzahl++;
+				}
+			}
+
+		}
+		// Test auf Läufer oder Dame
+		// nach rechts oben
+		for (int i = 1; i < 9; i++)
+		{
+
+			if (((posx + i)<9) && ((posy + i)<9) && (myboard->getPieceonPos(posx+i,posy+i)!='e' ))
+			{
+				if (whitetomove && ((myboard->getPieceonPos( posx+i, posy+i)=='b') || (myboard->getPieceonPos( posx+i, posy+i)=='q') ) )
+				{
+						piec[anzahl]= new Pieces();
+						piec[anzahl]->setName(myboard->getPieceonPos(posx+i,posy+i));
+						piec[anzahl]->setPos(posx,posy);
+						anzahl++;
+				}
+				else if (!whitetomove && ((myboard->getPieceonPos( posx+i, posy+i)=='B') || (myboard->getPieceonPos( posx+i, posy+i)=='Q') ) )
+				{
+						piec[anzahl]= new Pieces();
+						piec[anzahl]->setName(myboard->getPieceonPos(posx+i,posy+i));
+						piec[anzahl]->setPos(posx,posy);
+						anzahl++;
+				}
+			}
+
+		}
+		// nach rechts unten
+		for (int i = 1; i < 9; i++)
+		{
+
+			if (((posx + i)<9) && ((posy - i)>0) && (myboard->getPieceonPos(posx+i,posy-i)!='e' ))
+			{
+				if (whitetomove && ((myboard->getPieceonPos( posx+i, posy-i)=='b') || (myboard->getPieceonPos( posx+i, posy-i)=='q') ))
+				{
+						piec[anzahl]= new Pieces();
+						piec[anzahl]->setName(myboard->getPieceonPos(posx+i,posy-i));
+						piec[anzahl]->setPos(posx,posy);
+						anzahl++;
+				}
+				else if (!whitetomove && ((myboard->getPieceonPos( posx+i, posy-i)=='B') || (myboard->getPieceonPos( posx+i, posy-i)=='Q') )  )
+				{
+						piec[anzahl]= new Pieces();
+						piec[anzahl]->setName(myboard->getPieceonPos(posx+i,posy-i));
+						piec[anzahl]->setPos(posx,posy);
+						anzahl++;
+				}
+			}
+
+		}
+		// nach links unten
+		for (int i = 1; i < 9; i++)
+		{
+			if (((posx - i)>(0)) && ((posy - i)>0) && (myboard->getPieceonPos(posx-i,posy-i)!='e' ))
+			{
+				if (whitetomove && ((myboard->getPieceonPos( posx-i, posy-i)=='b') || (myboard->getPieceonPos( posx-i, posy-i)=='q') ))
+				{
+						piec[anzahl]= new Pieces();
+						piec[anzahl]->setName(myboard->getPieceonPos(posx-i,posy-i));
+						piec[anzahl]->setPos(posx,posy);
+						anzahl++;
+				}
+				else if (!whitetomove && ((myboard->getPieceonPos( posx-i, posy-i)=='B') || (myboard->getPieceonPos( posx-i, posy-i)=='Q') ) )
+				{
+						piec[anzahl]= new Pieces();
+						piec[anzahl]->setName(myboard->getPieceonPos(posx-i,posy-i));
+						piec[anzahl]->setPos(posx,posy);
+						anzahl++;
+				}
+			}
+		}
+		// nach links oben
+		for (int i = 1; i < 9; i++)
+		{
+			if (((posx - i)>0) && ((posy + i)<9) && (myboard->getPieceonPos(posx-i,posy+i)!='e' ))
+			{
+				if (whitetomove && ((myboard->getPieceonPos( posx-i, posy+i)=='b') || (myboard->getPieceonPos( posx-i, posy+i)=='q') ))
+				{
+						piec[anzahl]= new Pieces();
+						piec[anzahl]->setName(myboard->getPieceonPos(posx-i,posy+i));
+						piec[anzahl]->setPos(posx,posy);
+						anzahl++;
+				}
+				else if (!whitetomove && ((myboard->getPieceonPos( posx-i, posy+i)=='B') || (myboard->getPieceonPos( posx-i, posy+i)=='Q') ) )
+				{
+						piec[anzahl]= new Pieces();
+						piec[anzahl]->setName(myboard->getPieceonPos(posx-i,posy+i));
+						piec[anzahl]->setPos(posx,posy);
+						anzahl++;
+				}
+			}
+		}
+        piec[anzahl]=NULL;
+	return piec;
 }

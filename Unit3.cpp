@@ -33,7 +33,7 @@ void __fastcall UnderAttackTh::Execute()
 	Pieces *aim= new Pieces();
 	aim->setName(myboard->getPieceonPos(posx,posy));
 	aim->setPos(posx,posy);
-	Pieces *pic=myeva->whichFigureAttacks(myboard,posx,posy,whitetomove);
+	Pieces **pic=myeva->whichFigureAttacks(myboard,posx,posy,whitetomove);
 	*fertig=true;
 }
 //---------------------------------------------------------------------------+
