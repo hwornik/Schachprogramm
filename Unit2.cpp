@@ -166,7 +166,7 @@ void __fastcall DeepSearchTh::Execute()
 	}
 	xi=mw;
 	stdab=1;
-	std::cout << mw << " " << xi2 << " " << anzahl << "\n";
+	//std::cout << mw << " " << xi2 << " " << anzahl << "\n";
 	if(anzahl>2)
 	{
 		xi=(mw*mw)/anzahl;

@@ -14,13 +14,13 @@ private:
 	Evaluation *myeva;
 	Board *myboard;
 	int posx,posy;
-	bool whitetomove,*isunderAttack, *fertig;
+	bool whitetomove,*isnotunderAttack, *fertig;
 
 protected:
 	void __fastcall Execute();
 public:
 	__fastcall UnderAttackTh(bool CreateSuspended);
-	void setData(Board *myboard,int posx,int posy,bool whitetomove,bool *isunderAttack,bool *fertig);
+	void setData(Board *myboard,int posx,int posy,bool whitetomove,bool *isnotunderAttack,bool *fertig);
 };
 //---------------------------------------------------------------------------
 #endif

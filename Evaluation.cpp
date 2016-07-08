@@ -790,47 +790,15 @@ int Evaluation::getZugNr()
 	return compzugnr;
 }
 
-bool Evaluation::isPosunderAttack(Board *myboard,int posx,int posy, bool whitetomove)
-{
-	char c;
-	moving->init();
-	moving->setBoard(myboard);
-	moveboard->init();
-	for (int i = 1; i < 9; i++)
-	{
-		for (int j = 1; j < 9; j++)
-		{
-			c = moving->getPieceonPos(i, j);
-			if (c != 'e')
-			{
-				//this->compMovesandHits(false, c, moving, i, j, moveboard);
-				this->compMovesandHits(true, c, moving, i, j, moveboard);
-			}
-		}
-	}
-	/*std::cout << "hitboard\n";
-	for(int i=1;i<9;i++)
-	{
-		for(int j=1;j<9;j++)
-		{
-			 std::cout << hitboard->getPieceonPos(i,j);
-		}
-		std::cout << "\n";
-	} */
-	if(moveboard->getPieceonPos(posx,posy)=='x')
-		return true;
-	else
-		return false;
-}
 
-Pieces **Evaluation::whichFigureAttacks(Board *myboard,int posx,int posy, bool whitetomove)
+
+Pieces *Evaluation::whichFigureAttacks(Board *myboard,int posx,int posy, bool whitetomove)
 {
 	int anzahl=0;
-	// Test auf Bauer
-	// Test auf König
 	char promo = ' ';
 	bool notfoundfigure = true;
 	Pieces *piec[20];
+    piec[0]=NULL;
 	// Test auf Night
 	// Night;
 		if (((posx + 2) < 9) && ((posy + 1) < 9))
@@ -839,14 +807,14 @@ Pieces **Evaluation::whichFigureAttacks(Board *myboard,int posx,int posy, bool w
 			{
 					piec[anzahl]= new Pieces();
 					piec[anzahl]->setName(myboard->getPieceonPos( posx + 2, posy + 1));
-					piec[anzahl]->setPos(posx,posy);
+					piec[anzahl]->setPos( posx + 2, posy + 1);
 					anzahl++;
 			}
 			else if(!whitetomove && myboard->getPieceonPos( posx + 2, posy + 1)=='N')
 			{
 					piec[anzahl]= new Pieces();
 					piec[anzahl]->setName(myboard->getPieceonPos( posx + 2, posy + 1));
-					piec[anzahl]->setPos(posx,posy);
+					piec[anzahl]->setPos( posx + 2, posy + 1);
 					anzahl++;
 			}
 
@@ -857,14 +825,14 @@ Pieces **Evaluation::whichFigureAttacks(Board *myboard,int posx,int posy, bool w
 			{
 					piec[anzahl]= new Pieces();
 					piec[anzahl]->setName(myboard->getPieceonPos( posx + 2, posy - 1));
-					piec[anzahl]->setPos(posx,posy);
+					piec[anzahl]->setPos( posx + 2, posy - 1);
 					anzahl++;
 			}
 			else if(!whitetomove && myboard->getPieceonPos( posx + 2, posy - 1)=='N')
 			{
 					piec[anzahl]= new Pieces();
 					piec[anzahl]->setName(myboard->getPieceonPos( posx + 2, posy - 1));
-					piec[anzahl]->setPos(posx,posy);
+					piec[anzahl]->setPos( posx + 2, posy - 1);
 					anzahl++;
 			}
 		}
@@ -874,14 +842,14 @@ Pieces **Evaluation::whichFigureAttacks(Board *myboard,int posx,int posy, bool w
 			{
 					piec[anzahl]= new Pieces();
 					piec[anzahl]->setName(myboard->getPieceonPos( posx - 2, posy + 1));
-					piec[anzahl]->setPos(posx,posy);
+					piec[anzahl]->setPos( posx - 2, posy + 1);
 					anzahl++;
 			}
 			else if(!whitetomove && myboard->getPieceonPos( posx - 2, posy + 1)=='N')
 			{
 					piec[anzahl]= new Pieces();
 					piec[anzahl]->setName(myboard->getPieceonPos( posx - 2, posy + 1));
-					piec[anzahl]->setPos(posx,posy);
+					piec[anzahl]->setPos( posx - 2, posy + 1);
 					anzahl++;
 			}
 		}
@@ -891,14 +859,14 @@ Pieces **Evaluation::whichFigureAttacks(Board *myboard,int posx,int posy, bool w
 			{
 					piec[anzahl]= new Pieces();
 					piec[anzahl]->setName(myboard->getPieceonPos( posx - 2, posy - 1));
-					piec[anzahl]->setPos(posx,posy);
+					piec[anzahl]->setPos( posx - 2, posy - 1);
 					anzahl++;
 			}
 			else if(!whitetomove && myboard->getPieceonPos( posx - 2, posy - 1)=='N')
 			{
 					piec[anzahl]= new Pieces();
 					piec[anzahl]->setName(myboard->getPieceonPos( posx - 2, posy - 1));
-					piec[anzahl]->setPos(posx,posy);
+					piec[anzahl]->setPos( posx - 2, posy - 1);
 					anzahl++;
 			}
 		}
@@ -908,14 +876,14 @@ Pieces **Evaluation::whichFigureAttacks(Board *myboard,int posx,int posy, bool w
 			{
 					piec[anzahl]= new Pieces();
 					piec[anzahl]->setName(myboard->getPieceonPos( posx + 1, posy + 2));
-					piec[anzahl]->setPos(posx,posy);
+					piec[anzahl]->setPos( posx + 1, posy + 2);
 					anzahl++;
 			}
 			else if(!whitetomove && myboard->getPieceonPos( posx + 1, posy + 2)=='N')
 			{
 					piec[anzahl]= new Pieces();
 					piec[anzahl]->setName(myboard->getPieceonPos( posx + 1, posy + 2));
-					piec[anzahl]->setPos(posx,posy);
+					piec[anzahl]->setPos( posx + 1, posy + 2);
 					anzahl++;
 			}
 		}
@@ -925,14 +893,14 @@ Pieces **Evaluation::whichFigureAttacks(Board *myboard,int posx,int posy, bool w
 			{
 					piec[anzahl]= new Pieces();
 					piec[anzahl]->setName(myboard->getPieceonPos( posx - 1, posy + 2));
-					piec[anzahl]->setPos(posx,posy);
+					piec[anzahl]->setPos( posx - 1, posy + 2);
 					anzahl++;
 			}
 			else if(!whitetomove && myboard->getPieceonPos( posx - 1, posy + 2)=='N')
 			{
 					piec[anzahl]= new Pieces();
 					piec[anzahl]->setName(myboard->getPieceonPos( posx - 1, posy + 2));
-					piec[anzahl]->setPos(posx,posy);
+					piec[anzahl]->setPos( posx - 1, posy + 2);
 					anzahl++;
 			}
 		}
@@ -942,14 +910,14 @@ Pieces **Evaluation::whichFigureAttacks(Board *myboard,int posx,int posy, bool w
 			{
 					piec[anzahl]= new Pieces();
 					piec[anzahl]->setName(myboard->getPieceonPos( posx - 1, posy - 2));
-					piec[anzahl]->setPos(posx,posy);
+					piec[anzahl]->setPos( posx - 1, posy - 2);
 					anzahl++;
 			}
 			else if(!whitetomove && myboard->getPieceonPos( posx - 1, posy - 2)=='N')
 			{
 					piec[anzahl]= new Pieces();
 					piec[anzahl]->setName(myboard->getPieceonPos( posx - 1, posy - 2));
-					piec[anzahl]->setPos(posx,posy);
+					piec[anzahl]->setPos( posx - 1, posy - 2);
 					anzahl++;
 			}
 		}
@@ -959,14 +927,14 @@ Pieces **Evaluation::whichFigureAttacks(Board *myboard,int posx,int posy, bool w
 			{
 					piec[anzahl]= new Pieces();
 					piec[anzahl]->setName(myboard->getPieceonPos( posx + 1, posy - 2));
-					piec[anzahl]->setPos(posx,posy);
+					piec[anzahl]->setPos(posx + 1, posy - 2);
 					anzahl++;
 			}
 			else if(!whitetomove && myboard->getPieceonPos( posx + 1, posy - 2)=='N')
 			{
 					piec[anzahl]= new Pieces();
 					piec[anzahl]->setName(myboard->getPieceonPos( posx + 1, posy - 2));
-					piec[anzahl]->setPos(posx,posy);
+					piec[anzahl]->setPos(posx + 1, posy - 2);
 					anzahl++;
 			}
 		}
@@ -980,16 +948,17 @@ Pieces **Evaluation::whichFigureAttacks(Board *myboard,int posx,int posy, bool w
 				{
 						piec[anzahl]= new Pieces();
 						piec[anzahl]->setName(myboard->getPieceonPos( posx, posy+i));
-						piec[anzahl]->setPos(posx,posy);
+						piec[anzahl]->setPos( posx, posy+i);
 						anzahl++;
 				}
 				else if (!whitetomove && ((myboard->getPieceonPos( posx, posy+i)=='R') || (myboard->getPieceonPos( posx, posy+i)=='Q') ) )
 				{
 						piec[anzahl]= new Pieces();
 						piec[anzahl]->setName(myboard->getPieceonPos( posx, posy+i));
-						piec[anzahl]->setPos(posx,posy);
+						piec[anzahl]->setPos( posx, posy+i);
 						anzahl++;
 				}
+				break;
 			}
 		}
 		// Move right
@@ -1001,16 +970,17 @@ Pieces **Evaluation::whichFigureAttacks(Board *myboard,int posx,int posy, bool w
 				{
 						piec[anzahl]= new Pieces();
 						piec[anzahl]->setName(myboard->getPieceonPos(posx+i,posy));
-						piec[anzahl]->setPos(posx,posy);
+						piec[anzahl]->setPos( posx+i, posy);
 						anzahl++;
 				}
 				else if (!whitetomove && ((myboard->getPieceonPos( posx+i, posy)=='R') || (myboard->getPieceonPos( posx+i, posy)=='Q') )  )
 				{
 						piec[anzahl]= new Pieces();
 						piec[anzahl]->setName(myboard->getPieceonPos(posx+i,posy));
-						piec[anzahl]->setPos(posx,posy);
+						piec[anzahl]->setPos( posx+i, posy);
 						anzahl++;
 				}
+				break;
 			}
 		}
 		// Move down
@@ -1022,16 +992,17 @@ Pieces **Evaluation::whichFigureAttacks(Board *myboard,int posx,int posy, bool w
 				{
 						piec[anzahl]= new Pieces();
 						piec[anzahl]->setName(myboard->getPieceonPos(posx,posy-i));
-						piec[anzahl]->setPos(posx,posy);
+						piec[anzahl]->setPos( posx, posy-i);
 						anzahl++;
 				}
 				else if (!whitetomove && ((myboard->getPieceonPos( posx, posy-i)=='R') || (myboard->getPieceonPos( posx, posy-i)=='Q') ))
 				{
 						piec[anzahl]= new Pieces();
 						piec[anzahl]->setName(myboard->getPieceonPos(posx,posy-i));
-						piec[anzahl]->setPos(posx,posy);
+						piec[anzahl]->setPos( posx, posy-i);
 						anzahl++;
 				}
+				break;
 			}
 
 		}
@@ -1044,16 +1015,17 @@ Pieces **Evaluation::whichFigureAttacks(Board *myboard,int posx,int posy, bool w
 				{
 						piec[anzahl]= new Pieces();
 						piec[anzahl]->setName(myboard->getPieceonPos(posx-i,posy));
-						piec[anzahl]->setPos(posx,posy);
+						piec[anzahl]->setPos(posx-i,posy);
 						anzahl++;
 				}
 				else if (!whitetomove && ((myboard->getPieceonPos( posx-i, posy)=='R') || (myboard->getPieceonPos( posx-i, posy)=='Q') )  )
 				{
 						piec[anzahl]= new Pieces();
 						piec[anzahl]->setName(myboard->getPieceonPos(posx-i,posy));
-						piec[anzahl]->setPos(posx,posy);
+						piec[anzahl]->setPos(posx-i,posy);
 						anzahl++;
 				}
+				break;
 			}
 
 		}
@@ -1068,16 +1040,17 @@ Pieces **Evaluation::whichFigureAttacks(Board *myboard,int posx,int posy, bool w
 				{
 						piec[anzahl]= new Pieces();
 						piec[anzahl]->setName(myboard->getPieceonPos(posx+i,posy+i));
-						piec[anzahl]->setPos(posx,posy);
+						piec[anzahl]->setPos(posx+i,posy+i);
 						anzahl++;
 				}
 				else if (!whitetomove && ((myboard->getPieceonPos( posx+i, posy+i)=='B') || (myboard->getPieceonPos( posx+i, posy+i)=='Q') ) )
 				{
 						piec[anzahl]= new Pieces();
 						piec[anzahl]->setName(myboard->getPieceonPos(posx+i,posy+i));
-						piec[anzahl]->setPos(posx,posy);
+						piec[anzahl]->setPos(posx+i,posy+i);
 						anzahl++;
 				}
+				break;
 			}
 
 		}
@@ -1091,16 +1064,17 @@ Pieces **Evaluation::whichFigureAttacks(Board *myboard,int posx,int posy, bool w
 				{
 						piec[anzahl]= new Pieces();
 						piec[anzahl]->setName(myboard->getPieceonPos(posx+i,posy-i));
-						piec[anzahl]->setPos(posx,posy);
+						piec[anzahl]->setPos( posx+i, posy-i);
 						anzahl++;
 				}
 				else if (!whitetomove && ((myboard->getPieceonPos( posx+i, posy-i)=='B') || (myboard->getPieceonPos( posx+i, posy-i)=='Q') )  )
 				{
 						piec[anzahl]= new Pieces();
 						piec[anzahl]->setName(myboard->getPieceonPos(posx+i,posy-i));
-						piec[anzahl]->setPos(posx,posy);
+						piec[anzahl]->setPos( posx+i, posy-i);
 						anzahl++;
 				}
+				break;
 			}
 
 		}
@@ -1113,16 +1087,17 @@ Pieces **Evaluation::whichFigureAttacks(Board *myboard,int posx,int posy, bool w
 				{
 						piec[anzahl]= new Pieces();
 						piec[anzahl]->setName(myboard->getPieceonPos(posx-i,posy-i));
-						piec[anzahl]->setPos(posx,posy);
+						piec[anzahl]->setPos(posx-i,posy-i);
 						anzahl++;
 				}
 				else if (!whitetomove && ((myboard->getPieceonPos( posx-i, posy-i)=='B') || (myboard->getPieceonPos( posx-i, posy-i)=='Q') ) )
 				{
 						piec[anzahl]= new Pieces();
 						piec[anzahl]->setName(myboard->getPieceonPos(posx-i,posy-i));
-						piec[anzahl]->setPos(posx,posy);
+						piec[anzahl]->setPos(posx-i,posy-i);
 						anzahl++;
 				}
+				break;
 			}
 		}
 		// nach links oben
@@ -1134,18 +1109,106 @@ Pieces **Evaluation::whichFigureAttacks(Board *myboard,int posx,int posy, bool w
 				{
 						piec[anzahl]= new Pieces();
 						piec[anzahl]->setName(myboard->getPieceonPos(posx-i,posy+i));
-						piec[anzahl]->setPos(posx,posy);
+						piec[anzahl]->setPos(posx-i,posy+i);
 						anzahl++;
 				}
 				else if (!whitetomove && ((myboard->getPieceonPos( posx-i, posy+i)=='B') || (myboard->getPieceonPos( posx-i, posy+i)=='Q') ) )
 				{
 						piec[anzahl]= new Pieces();
 						piec[anzahl]->setName(myboard->getPieceonPos(posx-i,posy+i));
-						piec[anzahl]->setPos(posx,posy);
+						piec[anzahl]->setPos(posx-i,posy+i);
 						anzahl++;
 				}
+				break;
 			}
 		}
-        piec[anzahl]=NULL;
-	return piec;
+		// Test auf Bauer
+		if (whitetomove && (posx+1<9 && posy+1<9) && ((myboard->getPieceonPos( posx+1, posy+1)=='p') ))
+		{
+				piec[anzahl]= new Pieces();
+				piec[anzahl]->setName(myboard->getPieceonPos(posx+1,posy+1));
+				piec[anzahl]->setPos(posx+1,posy+1);
+				anzahl++;
+		}
+		else if (whitetomove && (posx-1>0 && posy+1<9) && ((myboard->getPieceonPos( posx-1, posy+1)=='p') ) )
+		{
+				piec[anzahl]= new Pieces();
+				piec[anzahl]->setName(myboard->getPieceonPos(posx-1,posy+1));
+				piec[anzahl]->setPos(posx-1,posy+1);
+				anzahl++;
+		}
+		else if (!whitetomove && (posx-1>0 && posy-1>0) &&((myboard->getPieceonPos( posx-1, posy-1)=='P') ) )
+		{
+				piec[anzahl]= new Pieces();
+				piec[anzahl]->setName(myboard->getPieceonPos(posx-1,posy-1));
+				piec[anzahl]->setPos(posx-1,posy-1);
+				anzahl++;
+		}
+		else if (!whitetomove && (posx+1<9 && posy-1>0) && ((myboard->getPieceonPos( posx+1, posy-1)=='P') )  )
+		{
+				piec[anzahl]= new Pieces();
+				piec[anzahl]->setName(myboard->getPieceonPos(posx+1,posy-1));
+				piec[anzahl]->setPos(posx+1,posy-1);
+				anzahl++;
+		}
+		// Test auf König
+		if ((whitetomove && (posy+1<9) && (myboard->getPieceonPos( posx, posy+1)=='K')) || (!whitetomove && (myboard->getPieceonPos( posx, posy+1)=='k') ))
+		{
+				piec[anzahl]= new Pieces();
+				piec[anzahl]->setName(myboard->getPieceonPos(posx,posy+1));
+				piec[anzahl]->setPos(posx,posy+1);
+				anzahl++;
+		}
+		else if ((whitetomove && (posx+1<9 && posy+1<9) && (myboard->getPieceonPos( posx+1, posy+1)=='K')) || (!whitetomove && (myboard->getPieceonPos( posx+1, posy+1)=='k') ))
+		{
+				piec[anzahl]= new Pieces();
+				piec[anzahl]->setName(myboard->getPieceonPos(posx+1,posy+1));
+				piec[anzahl]->setPos(posx+1,posy+1);
+				anzahl++;
+		}
+		else if ((whitetomove && (posx+1<9) && (myboard->getPieceonPos( posx+1, posy)=='K')) || (!whitetomove && (myboard->getPieceonPos( posx+1, posy)=='k') ))
+		{
+				piec[anzahl]= new Pieces();
+				piec[anzahl]->setName(myboard->getPieceonPos(posx+1,posy));
+				piec[anzahl]->setPos(posx+1,posy);
+				anzahl++;
+		}
+		else if ((whitetomove && (posx+1<9 && posy-1>0) &&(myboard->getPieceonPos( posx+1, posy-1)=='K')) || (!whitetomove && (myboard->getPieceonPos( posx+1, posy-1)=='k') ))
+		{
+				piec[anzahl]= new Pieces();
+				piec[anzahl]->setName(myboard->getPieceonPos(posx+1,posy-1));
+				piec[anzahl]->setPos(posx+1,posy-1);
+				anzahl++;
+		}
+		else if ((whitetomove && (posy-1>0) && (myboard->getPieceonPos( posx, posy-1)=='K')) || (!whitetomove && (myboard->getPieceonPos( posx, posy-1)=='k') ))
+		{
+				piec[anzahl]= new Pieces();
+				piec[anzahl]->setName(myboard->getPieceonPos(posx,posy-1));
+				piec[anzahl]->setPos(posx,posy-1);
+				anzahl++;
+		}
+		else if ((whitetomove && (posx-1>0 && posy-1>0) && (myboard->getPieceonPos( posx-1, posy-1)=='K')) || (!whitetomove && (myboard->getPieceonPos( posx, posy+1)=='k') ))
+		{
+				piec[anzahl]= new Pieces();
+				piec[anzahl]->setName(myboard->getPieceonPos(posx-1,posy-1));
+				piec[anzahl]->setPos(posx-1,posy-1);
+				anzahl++;
+		}
+		else if ((whitetomove && (posx-1>0) && (myboard->getPieceonPos( posx-1, posy)=='K')) || (!whitetomove && (myboard->getPieceonPos( posx-1, posy)=='k') ))
+		{
+				piec[anzahl]= new Pieces();
+				piec[anzahl]->setName(myboard->getPieceonPos(posx-1,posy));
+				piec[anzahl]->setPos(posx-1,posy);
+				anzahl++;
+		}
+		else if ((whitetomove && (posx-1>0 && posy+1<9) && (myboard->getPieceonPos( posx-1, posy+1)=='K')) || (!whitetomove && (myboard->getPieceonPos( posx-1, posy+1)=='k') ))
+		{
+				piec[anzahl]= new Pieces();
+				piec[anzahl]->setName(myboard->getPieceonPos(posx-1,posy+1));
+				piec[anzahl]->setPos(posx-1,posy+1);
+				anzahl++;
+		}
+		std::cout << "Angriffe: " << anzahl << "\n";
+		piec[anzahl]=NULL;
+	return piec[0];
 }

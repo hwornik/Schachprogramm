@@ -28,8 +28,7 @@ public:
 	int getZugNr();
 	Zuege getAktZueg();
 	int getZug(bool von,bool xwert);
-	bool isPosunderAttack(Board *myboard,int posx,int posy, bool whitetomove);
-	Pieces **whichFigureAttacks(Board *myboard,int posx,int posy, bool whitetomove);
+	Pieces *whichFigureAttacks(Board *myboard,int posx,int posy, bool whitetomove);
 private:
 	bool noticeMovesandHits(char pie, Movement * moving, int vx, int vy);
 	bool compMovesandHits(bool searchhits, char pie, Movement *moving, int vx, int vy, Board *moveboard);

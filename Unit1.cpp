@@ -143,7 +143,7 @@ void __fastcall CalculusTopTh::Execute()
 						//zug[aktindex]=myeva->getZugStr();
 						this->bestzuege[aktindex]->setWhitePiece(myeva->getZug(true,true),myeva->getZug(true,false),myeva->getZug(false,true),myeva->getZug(false,false));
 						//// Teste ob Figur genommen werden kann. Wenn nicht, berechne Zugwerte
-						//std::cout <<  this->bestzuege[aktindex]->getWhiteMove() << " " << bewr[aktindex] << "\n";
+					   //std::cout <<  this->bestzuege[aktindex]->getWhiteMove() << " " << bewr[aktindex] << "\n";
 
 						testeFigurAttacke(ubgboarda[aktindex],myeva->getZug(false,true),myeva->getZug(false,false),&boardok[aktindex],&fbewisready[aktindex]);
 						//this->berechneZugwerte(zug[aktindex],ubgboarda[aktindex],bewr[aktindex],&bewertarr[aktindex],&tbewertarr[aktindex],bestzuege[aktindex]->getWhitePiece(true,true),bestzuege[aktindex]->getWhitePiece(true,false),bestzuege[aktindex]->getWhitePiece(false,true), bestzuege[aktindex]->getWhitePiece(false,false),false);
@@ -182,7 +182,7 @@ void __fastcall CalculusTopTh::Execute()
 			}
 			else
 			{
-				std::cout << "Figur weg bei " << bestzuege[i]->getWhiteMove() << "\n";
+				std::cout << "\nFigur weg bei " << bestzuege[i]->getWhiteMove() << "\n";
 			   if(myboard->getwhitetoMove())
 					bewertarr[aktindex]=-1000000;
 				else
@@ -343,7 +343,7 @@ void CalculusTopTh::testeFigurAttacke(Board *myboard,int posx,int posy,bool *isu
 				{
 					delete fthreadarr[ix];
 					fthreadarr[ix]=new UnderAttackTh(true);
-					fthreadarr[ix]->setData(myboard,posx,posy,!myboard->getwhitetoMove(),isunderattack,fertig);
+					fthreadarr[ix]->setData(myboard->copyBoard(),posx,posy,!myboard->getwhitetoMove(),isunderattack,fertig);
 					fthreadarr[ix]->Start();
 					count++;
 					break;
