@@ -23,6 +23,12 @@
 __fastcall CalculusTopTh::CalculusTopTh(bool CreateSuspended)
 	: TThread(CreateSuspended)
 {
+
+}
+//---------------------------------------------------------------------------
+void __fastcall CalculusTopTh::Execute()
+{
+	// ---- Fügen Sie den Thread-Code hier ein ----
 	myevatst   = new Evaluation();
 	myeva = new Evaluation();
 	pic = new Pieces();
@@ -34,12 +40,6 @@ __fastcall CalculusTopTh::CalculusTopTh(bool CreateSuspended)
 	{
 		bestzuege[i]= new Zuege();
 	}
-}
-//---------------------------------------------------------------------------
-void __fastcall CalculusTopTh::Execute()
-{
-	// ---- Fügen Sie den Thread-Code hier ein ----
-
 	threadarr = new DeepSearchTh*[MAX_THREADS];
 	fthreadarr = new UnderAttackTh*[MAX_THREADS];
     for(int i=0;i<MAX_THREADS;i++)
@@ -170,6 +170,8 @@ void __fastcall CalculusTopTh::Execute()
 				{
 					 Sleep(100);
 				}
+                Sleep(100);
+				//fthreadarr[ix]->CheckTerminated();
 				count++;
 			}
 		}
@@ -343,7 +345,7 @@ void CalculusTopTh::testeFigurAttacke(Board *myboard,int posx,int posy,bool *isu
 				{
 					delete fthreadarr[ix];
 					fthreadarr[ix]=new UnderAttackTh(true);
-					fthreadarr[ix]->setData(myboard->copyBoard(),posx,posy,!myboard->getwhitetoMove(),isunderattack,fertig);
+					fthreadarr[ix]->setData(myboard,posx,posy,!myboard->getwhitetoMove(),isunderattack,fertig);
 					fthreadarr[ix]->Start();
 					count++;
 					break;

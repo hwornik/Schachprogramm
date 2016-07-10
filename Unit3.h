@@ -15,11 +15,12 @@ private:
 	Board *myboard;
 	int posx,posy;
 	bool whitetomove,*isnotunderAttack, *fertig;
-
+	Pieces *piec[20],*piece;
 protected:
 	void __fastcall Execute();
 public:
 	__fastcall UnderAttackTh(bool CreateSuspended);
+    int whichFigureAttacks(Board *myboard,int posx,int posy, bool whitetomove);
 	void setData(Board *myboard,int posx,int posy,bool whitetomove,bool *isnotunderAttack,bool *fertig);
 };
 //---------------------------------------------------------------------------
