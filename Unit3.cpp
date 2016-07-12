@@ -33,10 +33,8 @@ void __fastcall UnderAttackTh::Execute()
 	myeva= new Evaluation();
 	piece=new Pieces();
 	piece->init();
-	int figwert=0;
 	bool attack=true;
 	piece->setName(myboard->getPieceonPos(posx,posy));
-	figwert=0;
 	int vorz=0;
 	Pieces *pic;
 	int wert,min;
@@ -74,7 +72,7 @@ void __fastcall UnderAttackTh::Execute()
 	*fertig=true;
 }
 //---------------------------------------------------------------------------+
-void UnderAttackTh::setData(Board *myboard,int posx,int posy,bool whitetomove,bool *isnotunderAttack, bool *fertig)
+void UnderAttackTh::setData(Board *myboard,int figwert, int posx,int posy,bool whitetomove,bool *isnotunderAttack, bool *fertig)
 {
 		  this->myboard=myboard;
 		  this->posx=posx;
@@ -82,6 +80,7 @@ void UnderAttackTh::setData(Board *myboard,int posx,int posy,bool whitetomove,bo
 		  this->whitetomove=whitetomove;
 		  this->isnotunderAttack=isnotunderAttack;
 		  this->fertig=fertig;
+          this->figwert=figwert;
 }
 
 int UnderAttackTh::whichFigureAttacks(Board *myboard,int posx,int posy, bool whitetomove)

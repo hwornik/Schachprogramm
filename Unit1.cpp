@@ -85,7 +85,7 @@ void __fastcall CalculusTopTh::Execute()
 	int aktindex = 0;
     int aktthread=0;
 	int aktberech[16];
-
+	int figwert=0;
 	int	wwerta[4], bwerta[4],kontrollea[4],bewegfigurea[4], hita[4], movezahla[4],bzuga[4];
 	// init
 	for(int i=0;i<16;i++)
@@ -144,8 +144,15 @@ void __fastcall CalculusTopTh::Execute()
 						this->bestzuege[aktindex]->setWhitePiece(myeva->getZug(true,true),myeva->getZug(true,false),myeva->getZug(false,true),myeva->getZug(false,false));
 						//// Teste ob Figur genommen werden kann. Wenn nicht, berechne Zugwerte
 					   //std::cout <<  this->bestzuege[aktindex]->getWhiteMove() << " " << bewr[aktindex] << "\n";
+						char c=myboard->getPieceonPos(myeva->getZug(false,true),myeva->getZug(false,false));
+						if(c!='e')
+						{
+							pic->init();
+							pic->setName(c);
+							figwert=pic->getWert();
+						}
 
-						testeFigurAttacke(ubgboarda[aktindex],myeva->getZug(false,true),myeva->getZug(false,false),&boardok[aktindex],&fbewisready[aktindex]);
+						testeFigurAttacke(ubgboarda[aktindex],figwert,myeva->getZug(false,true),myeva->getZug(false,false),&boardok[aktindex],&fbewisready[aktindex]);
 						//this->berechneZugwerte(zug[aktindex],ubgboarda[aktindex],bewr[aktindex],&bewertarr[aktindex],&tbewertarr[aktindex],bestzuege[aktindex]->getWhitePiece(true,true),bestzuege[aktindex]->getWhitePiece(true,false),bestzuege[aktindex]->getWhitePiece(false,true), bestzuege[aktindex]->getWhitePiece(false,false),false);
 
 						///-------------------------Ende
@@ -332,7 +339,7 @@ void CalculusTopTh::berechneZugwerte(char *zuga,Board *grboard,int bewr, int *be
 
 }
 
-void CalculusTopTh::testeFigurAttacke(Board *myboard,int posx,int posy,bool *isunderattack,bool *fertig)
+void CalculusTopTh::testeFigurAttacke(Board *myboard,int figwert, int posx,int posy,bool *isunderattack,bool *fertig)
 {
 		int count=0;
 		//----------------------------------
@@ -345,7 +352,7 @@ void CalculusTopTh::testeFigurAttacke(Board *myboard,int posx,int posy,bool *isu
 				{
 					delete fthreadarr[ix];
 					fthreadarr[ix]=new UnderAttackTh(true);
-					fthreadarr[ix]->setData(myboard,posx,posy,!myboard->getwhitetoMove(),isunderattack,fertig);
+					fthreadarr[ix]->setData(myboard,figwert,posx,posy,!myboard->getwhitetoMove(),isunderattack,fertig);
 					fthreadarr[ix]->Start();
 					count++;
 					break;

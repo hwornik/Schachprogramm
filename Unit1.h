@@ -44,7 +44,7 @@ private:
 	UnderAttackTh **fthreadarr;
     int bewr[64];
 	void berechneZugwerte(char *zuga,Board *grboard,int bewr, int *bewertarr,int *taktikarr,bool masterwhitetomove);
-	void testeFigurAttacke(Board *myboard,int posx,int posy,bool *isunderattack,bool *fertig);
+	void testeFigurAttacke(Board *myboard,int figwert,int posx,int posy,bool *isunderattack,bool *fertig);
 	Evaluation *myevatst;
 	Zuege *bestMove[4];
 	Board *ubgboarda[64];

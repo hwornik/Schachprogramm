@@ -13,7 +13,7 @@ class UnderAttackTh : public TThread
 private:
 	Evaluation *myeva;
 	Board *myboard;
-	int posx,posy;
+	int posx,posy,figwert;
 	bool whitetomove,*isnotunderAttack, *fertig;
 	Pieces *piec[20],*piece;
 protected:
@@ -21,7 +21,7 @@ protected:
 public:
 	__fastcall UnderAttackTh(bool CreateSuspended);
     int whichFigureAttacks(Board *myboard,int posx,int posy, bool whitetomove);
-	void setData(Board *myboard,int posx,int posy,bool whitetomove,bool *isnotunderAttack,bool *fertig);
+	void setData(Board *myboard,int figwert,int posx,int posy,bool whitetomove,bool *isnotunderAttack,bool *fertig);
 };
 //---------------------------------------------------------------------------
 #endif
